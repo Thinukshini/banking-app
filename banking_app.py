@@ -1,5 +1,15 @@
 import datetime
 
+def datetimeshow():
+    return datetime.date.today()
+
+#Create Account Number 
+def Create():
+    import random
+    random_number = random.randint(999, 10000)
+    number= random_number   
+    return number
+
 #Deposite 
 Balance=50000
 def Deposite(amount):
@@ -7,26 +17,30 @@ def Deposite(amount):
         global Balance
         Balance+=amount
         print(f"Successfully deposited {amount}.New balance:{Balance}")
+
+        with open('transation_history.txt', 'a') as file:
+            file.write(f"{amount},{Balance}\n")
+            
         return Balance
         
 #Withdraw
 def Withdraw(amount):
     global Balance
-    if amount > Balance:
-        print("Insufficient balance.")
-       
+
+    if amount < Balance:
+    
         Balance-=amount
         print(f"Successfully withdrawn {amount}. New balance:{Balance}")
-        return Balance 
 
+        with open('transation_history.txt', 'a') as file:
+            file.write(f"{amount},{Balance}\n")
+
+        return Balance 
+    
     elif amount>Balance:
         print("Insufficient balance.")
+        return
 
-    else:
-        Balance-=amount
-        print(f"Successfully withdrawn {amount}. New balance:{Balance}")  
-        return Balance
-    
 
 while True:
     print("1.Create Account")
@@ -43,36 +57,60 @@ while True:
         password=int(input("Enter the password:"))
         Address=input("Enter your address:")
         NIC_Number=input("Enter your NIC number:")
-        with open('user_details.txt', 'a') as file:
-            file.write(f"{User_name},{password},{Address},{NIC_Number}\n")
         print("created account for", User_name)
-        Account_Number=
+        print("Your account number")
+        Acc_Num=Create()
+        print(Acc_Num)
 
+        with open('user_details.txt', 'a') as file:
+            file.write(f"{User_name},{password},{Address},{NIC_Number},{Acc_Num}\n")
+
+
+    
     elif choice=="2":
          amount=float(input("Enter amount to deposite Rs:"))
          Deposite(amount)
+
          with open('deposite_details.txt','a') as file:
-             file.write(f"{amount},{Balance}\n")
+             file.write(f"{User_name},{Acc_Num},{amount},{Balance}\n")
+         print("Deposite successful.")
          
 
     elif choice=="3":
          amount=float(input("Enter the amount to withdraw Rs:"))
          Withdraw(amount)
+         if amount> Balance:
+                print("Insufficient balance")
+
          with open('withdraw_details.txt','a') as file:
-             file.write(f"{amount},{Balance}\n")
+             file.write(f"{User_name},{Acc_Num},{amount},{Balance}\n")
          print("withdraw successful.")
+
 
     elif choice=="4":
         print("Your available balance is Rs:")
         print(Balance)
 
+        with open('Available_balance.txt' 'a') as file:
+            file.write(f"{User_name},{Acc_Num}, {Balance}\n")
+
+
 
     elif choice=="5":
-        print("your transation history " , datetime.datetime.now())
-        with open('deposite_details.txt','withdraw_details.txt','r') as file:
+    
+        print("your transation history " , datetimeshow())
+
+        with open('deposite_details.txt','r') as file:
+            for i in file:
+                test = i.split(",")
+                print(i)
+
+        with open('withdraw_details.txt','r') as file:
+            for j in file:
+                test = j.split(",")
+                print(j)
+          
             
-            file.read()
-        
         
     elif choice == "6":
         print("Thank you for using our online banking system.")

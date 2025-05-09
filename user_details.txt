@@ -1,5 +1,6 @@
-thinu,1234
-thinu,2002
-Thinu,2002,Mannar
-Thinukshini,200204,Mannar
-jhgj,46798,hgjgdfbv,58990
+Name,Password,Address,NIC Number,Acc Number
+Andrew,1972,Mannar,19722738749,9118
+eron,1203,colombo,790990,2240
+thinu,2002,mannar,545465667,2704
+marshake,123456,london,4545455776,6459
+johnson,1966,india,6689080000000,1472
