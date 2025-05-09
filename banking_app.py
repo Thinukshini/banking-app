@@ -22,7 +22,9 @@ def Deposite(amount):
             file.write(f"{amount},{Balance}\n")
             
         return Balance
-        
+    
+
+
 #Withdraw
 def Withdraw(amount):
     global Balance
@@ -68,16 +70,23 @@ while True:
 
     
     elif choice=="2":
+         Acc_Num=int(input("Enter your Account_Number:"))
+         User_name=input("Enter your Name:")
+
          amount=float(input("Enter amount to deposite Rs:"))
          Deposite(amount)
 
          with open('deposite_details.txt','a') as file:
              file.write(f"{User_name},{Acc_Num},{amount},{Balance}\n")
          print("Deposite successful.")
-         
+
 
     elif choice=="3":
-         amount=float(input("Enter the amount to withdraw Rs:"))
+         Acc_Num=int(input("Enter your Account_Number:"))
+         User_name=input("Enter your Name:")
+
+         amount=float(input("Enter the amount to withdraw Rs:"))  
+
          Withdraw(amount)
          if amount> Balance:
                 print("Insufficient balance")
@@ -88,15 +97,18 @@ while True:
 
 
     elif choice=="4":
+        Acc_Num=int(input("Enter your Account_Number:"))
         print("Your available balance is Rs:")
         print(Balance)
 
-        with open('Available_balance.txt' 'a') as file:
-            file.write(f"{User_name},{Acc_Num}, {Balance}\n")
+        with open('Available_balance.txt','a') as file:
+            file.write(f"{User_name},{Acc_Num},{Balance}\n")
 
 
 
     elif choice=="5":
+        Acc_Num=int(input("Enter your Account_Number:"))
+        User_name=input("Enter your Name:")
     
         print("your transation history " , datetimeshow())
 
@@ -118,3 +130,4 @@ while True:
         
     else:
         print("Invalid choice. Please select a number between 1-6")
+        
