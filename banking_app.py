@@ -81,7 +81,7 @@ while True:
          with open('deposite_details.txt','a') as file:
              file.write(f"{User_name},{Acc_Num},{amount},{Balance}\n")
          print("Deposite successful.")
-         
+
 
     elif choice=="3":
          Acc_Num=int(input("Enter your Account Number:"))
@@ -133,3 +133,4 @@ while True:
         
     else:
         print("Invalid choice. Please select a number between 1-6")
+        
