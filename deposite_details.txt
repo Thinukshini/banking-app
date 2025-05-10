@@ -1,3 +1,6 @@
 Name, Acc_No, Deposite,balance
 
 johnson,1472,3500.0,53500.0
+carlo,9184,2500.0,52500.0
+johnson,1472,6000.0,56000.0
+thinu,6459,400.0,56400.0

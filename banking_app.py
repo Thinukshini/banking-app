@@ -3,12 +3,14 @@ import datetime
 def datetimeshow():
     return datetime.date.today()
 
+
 #Create Account Number 
 def Create():
     import random
     random_number = random.randint(999, 10000)
     number= random_number   
     return number
+
 
 #Deposite 
 Balance=50000
@@ -22,7 +24,8 @@ def Deposite(amount):
             file.write(f"{amount},{Balance}\n")
             
         return Balance
-        
+    
+
 #Withdraw
 def Withdraw(amount):
     global Balance
@@ -52,13 +55,14 @@ while True:
 
     choice=input("Enter your choice(1-6):")
 
+
     if choice=="1":
         User_name=input("Enter your name:")
         password=int(input("Enter the password:"))
         Address=input("Enter your address:")
         NIC_Number=input("Enter your NIC number:")
         print("created account for", User_name)
-        print("Your account number")
+        print("Your account number:")
         Acc_Num=Create()
         print(Acc_Num)
 
@@ -68,6 +72,9 @@ while True:
 
     
     elif choice=="2":
+         Acc_Num=int(input("Enter Your Account Number:"))
+         User_name=input("Enter Your Name:")
+
          amount=float(input("Enter amount to deposite Rs:"))
          Deposite(amount)
 
@@ -77,6 +84,9 @@ while True:
          
 
     elif choice=="3":
+         Acc_Num=int(input("Enter your Account Number:"))
+         User_name=input("Enter your Name:")
+
          amount=float(input("Enter the amount to withdraw Rs:"))
          Withdraw(amount)
          if amount> Balance:
@@ -88,15 +98,20 @@ while True:
 
 
     elif choice=="4":
+        Acc_Num=int(input("Enter Your Account Number:"))
+        User_name=input("Enter Your Name:")
+
         print("Your available balance is Rs:")
         print(Balance)
 
-        with open('Available_balance.txt' 'a') as file:
+        with open('Available_balance.txt' , 'a') as file:
             file.write(f"{User_name},{Acc_Num}, {Balance}\n")
 
 
 
     elif choice=="5":
+        Acc_Num=int(input("Enter Your Account Number:"))
+        User_name=input("Enter Your Name:")
     
         print("your transation history " , datetimeshow())
 
