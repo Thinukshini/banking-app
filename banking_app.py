@@ -4,6 +4,7 @@ def datetimeshow():
     return datetime.date.today()
 
 
+
 #Create Account Number 
 def Create():
     import random
@@ -26,6 +27,31 @@ def Deposite(amount):
         return Balance
     
 
+#Create Admin
+Admin="Admin"
+password="1234"
+
+Admin_name=input("Enter the Admin Name:")
+Admin_password=input("Enter the password:")
+if Admin==Admin_name and password==Admin_password:
+    print("Login Successful!")
+
+else:
+    print("Login failed. Exiting programe.")
+    exit()
+
+#Check Admin Status
+def check_admin_status():
+    Admin="Admin"
+
+    User_name=input("Enter the name:")
+    if User_name==Admin: 
+        print ("you are an Admin!")
+    
+    else:
+        print("You are a coustomer")
+
+
 #Withdraw
 def Withdraw(amount):
     global Balance
@@ -40,6 +66,9 @@ def Withdraw(amount):
 
         return Balance 
     
+    elif Balance < 5000:
+        print("Warning Balance below Rs.5000!")
+    
     elif amount>Balance:
         print("Insufficient balance.")
         return
@@ -51,7 +80,9 @@ while True:
     print("3.Withdraw Money")
     print("4.Check Balance")
     print("5.Transation History")
-    print("6.Exit")
+    print("6.Check Admin status")
+    print("7.Show Current Date")
+    print("8.Exit")
 
     choice=input("Enter your choice(1-6):")
 
@@ -89,7 +120,7 @@ while True:
 
          amount=float(input("Enter the amount to withdraw Rs:"))
          Withdraw(amount)
-         if amount> Balance:
+         if amount < Balance:
                 print("Insufficient balance")
 
          with open('withdraw_details.txt','a') as file:
@@ -125,9 +156,18 @@ while True:
                 test = j.split(",")
                 print(j)
           
-            
+
+    elif choice=="6":
+        print("Check the Admin status.")
+        check_admin_status()
+
+
+    elif choice=="7":
+        print("Today is:", datetimeshow()) 
+        print("Have A Nice Day!")
+
         
-    elif choice == "6":
+    elif choice == "8":
         print("Thank you for using our online banking system.")
         break
         
